@@ -1,0 +1,28 @@
+strict digraph {
+  node [shape=record]
+
+  pubKey [
+    label = "UTxO with datum |
+        committee hash\l
+        sidechain epoch\l
+    "]
+
+  merkleRoot [
+    label = "UTxO with datum | Merkle root"
+    ]
+
+  newPubKey [
+    label = "UTxO with datum |
+        committee hash\l
+        sidechain epoch\l
+    "]
+
+  tx [label = "Verification key update tx |
+        redeemer: UpdateCommitteeRedeemer\l
+        tx in: committee hash UTxO\l
+      "]
+
+  merkleRoot -> tx [style = dashed, label = "references"]
+  pubKey -> tx [label = "consumes"]
+  tx -> newPubKey
+}
